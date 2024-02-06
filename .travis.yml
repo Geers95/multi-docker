@@ -14,3 +14,10 @@ after_sucess:
   - docker build -t geers/multi-nginx ./nginx
   - docker build -t geers/multi-server ./server
   - docker build -t geers/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push geers/multi-client
+  - docker push geers/multi-nginx
+  - docker push geers/multi-server
+  - docker push geers/multi-worker
+
+
